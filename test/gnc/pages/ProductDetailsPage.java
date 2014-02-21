@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Selenide.sleep;
 public class ProductDetailsPage {
   public void addProductToBasket() {
     $(".purchaseButton").click();
-    sleep(1000);
+    sleep(500);
   }
 
   public BasketPage goToBasket() {

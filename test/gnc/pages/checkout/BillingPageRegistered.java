@@ -59,26 +59,10 @@ public class BillingPageRegistered extends BillingPage {
   public void payByCreditCard() {
     $("#checkout_card_type").selectOptionByValue("VISA");
     $("iframe").waitUntil(appears, 20000);
-//    open($("iframe").getAttribute("src"));
-//    $("#cardNumber").waitUntil(appears, 5000);
-//    $("#cardNumber").val("4809490012341234");
-//    $("#expiryMonth").selectOptionByValue("11");
-//    $("#expiryYear").waitUntil(appears, 5000);
-//    $("#expiryYear").selectOption("17");
-//    $("#csc").val("123");
-//    $("#btnSubmit").click();
   }
 
   public SelenideElement getAddDeliveryAddressButton() {
     return $(".adddelivery");
-  }
-
-  public SelenideElement editAddressLink() {
-    return $(".edit-address-link");
-  }
-
-  public SelenideElement submitDeliveryAddressButton() {
-    return getSubmitDeliveryAddressButton();
   }
 
   public SelenideElement getBillingFormErrors() {

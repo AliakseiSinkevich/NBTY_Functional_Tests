@@ -15,7 +15,7 @@ import static com.codeborne.selenide.Condition.value;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.page;
 import static gnc.util.PageUtils.generateRandomEmail;
-import static gnc.util.PageUtils.registerUser;
+import static gnc.util.PageUtils.signInAsDefaultUser;
 import static gnc.util.PageUtils.signOut;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -60,10 +60,18 @@ public class CheckoutUnregisteredSpec extends GNCCommonSpec {
     BillingPageRegistered billingPage = page(BillingPageRegistered.class);
     billingPage.getAddDeliveryAddressButton().shouldNotBe(visible);
     billingPage.getNewAddressForm().shouldBe(visible);
+
+    billingPage.getDeliveryForm().getFirstNameField().shouldHave(value("Vasya"));
+    billingPage.getDeliveryForm().getLastNameField().shouldHave(value("Pupkin"));
+
+    billingPage.addDeliveryAddress("A", "B", "W1T 3EF", "Street1", "City", "07031896976");
+    billingPage.getAddDeliveryAddressButton().shouldBe(visible);
   }
 
 
   protected AboutYouPage goToCheckoutUnregistered() {
+    signOut();
+    signInAsDefaultUser();
     signOut();
     clearCookie("luc");
     ProductDetailsPage pdp = PageUtils.addProductToBasket("60003907");
