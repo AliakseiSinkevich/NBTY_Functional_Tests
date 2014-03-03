@@ -57,7 +57,7 @@ public class BillingPageRegistered extends BillingPage {
   }
 
   public void payByCreditCard() {
-    $("#checkout_card_type").selectOptionByValue("VISA");
+    $("#checkout_card_type").selectOptionByValue("Visa");
     $("iframe").waitUntil(appears, 20000);
   }
 
