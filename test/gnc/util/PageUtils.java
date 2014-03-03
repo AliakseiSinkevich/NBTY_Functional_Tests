@@ -1,6 +1,5 @@
 package gnc.util;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import gnc.pages.HomePage;
 import gnc.pages.ProductDetailsPage;
@@ -8,13 +7,8 @@ import gnc.pages.RegistrationPage;
 import org.openqa.selenium.By;
 import util.PropertiesManager;
 
-import static com.codeborne.selenide.Condition.appear;
-import static com.codeborne.selenide.Condition.appears;
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.Selenide.refresh;
-import static util.CustomFunctions.clearCookie;
 
 public class PageUtils {
   public static void signInAsDefaultUser() {
