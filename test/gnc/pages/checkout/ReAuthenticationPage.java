@@ -2,6 +2,7 @@ package gnc.pages.checkout;
 
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Selectors.byAttribute;
 import static com.codeborne.selenide.Selectors.byValue;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.page;
@@ -30,5 +31,9 @@ public class ReAuthenticationPage {
 
   public SelenideElement getSubmitEmailButton() {
     return $(byValue("Continue"));
+  }
+
+  public SelenideElement getPasswordInput() {
+    return $(byAttribute("name", "password"));
   }
 }

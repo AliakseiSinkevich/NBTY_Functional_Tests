@@ -85,8 +85,19 @@ public class CheckoutUnregisteredSpec extends GNCCommonSpec {
   }
 
   private void checkAuthenticationPageErrorMessages(ReAuthenticationPage reAuthenticationPage) {
+    reAuthenticationPage.getSubmitEmailButton().click();
+    reAuthenticationPage.getErrorsBox().shouldHave(text("Password is required."));
+    reAuthenticationPage.getPasswordInput().val("123");
+    reAuthenticationPage.getSubmitEmailButton().click();
+    reAuthenticationPage.getErrorsBox().shouldHave(text("Please enter at least 6 characters."));
+    reAuthenticationPage.getPasswordInput().val("______");
+    reAuthenticationPage.getSubmitEmailButton().click();
+    sleep(500);
+    reAuthenticationPage.getErrorsBox().shouldHave(text("The entered username or password is invalid"));
+
     reAuthenticationPage.openEmailEnteringForm();
     sleep(500);
+    reAuthenticationPage.getEmailInput().val("");
     reAuthenticationPage.getSubmitEmailButton().click();
     reAuthenticationPage.getErrorsBox().shouldHave(text("Email is required."));
     reAuthenticationPage.getEmailInput().val("invalid_email");
