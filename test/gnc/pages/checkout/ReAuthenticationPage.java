@@ -1,17 +1,34 @@
 package gnc.pages.checkout;
 
+import com.codeborne.selenide.SelenideElement;
+
 import static com.codeborne.selenide.Selectors.byValue;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.page;
 
 public class ReAuthenticationPage {
   public AboutYouPage goToAboutYou(String email) {
+    openEmailEnteringForm();
+    getEmailInput().val(email);
+    getSubmitEmailButton().click();
+    return page(AboutYouPage.class);
+  }
+
+  public SelenideElement getEmailInput() {
+    return $("#checkout_form_email");
+  }
+
+  public void openEmailEnteringForm() {
     if ($("#wrongEmailLink").isDisplayed()) {
       $("#wrongEmailLink").click();
     }
+  }
 
-    $("#checkout_form_email").val(email);
-    $(byValue("Continue")).click();
-    return page(AboutYouPage.class);
+  public SelenideElement getErrorsBox() {
+    return $("#checkoutForm");
+  }
+
+  public SelenideElement getSubmitEmailButton() {
+    return $(byValue("Continue"));
   }
 }

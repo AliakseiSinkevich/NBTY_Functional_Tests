@@ -14,6 +14,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.value;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.sleep;
 import static gnc.util.PageUtils.generateRandomEmail;
 import static gnc.util.PageUtils.signInAsDefaultUser;
 import static gnc.util.PageUtils.signOut;
@@ -78,7 +79,19 @@ public class CheckoutUnregisteredSpec extends GNCCommonSpec {
     pdp.goToBasket().goToCheckout();
     ReAuthenticationPage reAuthenticationPage = page(ReAuthenticationPage.class);
 
+    checkAuthenticationPageErrorMessages(reAuthenticationPage);
+
     return reAuthenticationPage.goToAboutYou(generateRandomEmail());
+  }
+
+  private void checkAuthenticationPageErrorMessages(ReAuthenticationPage reAuthenticationPage) {
+    reAuthenticationPage.openEmailEnteringForm();
+    sleep(500);
+    reAuthenticationPage.getSubmitEmailButton().click();
+    reAuthenticationPage.getErrorsBox().shouldHave(text("Email is required."));
+    reAuthenticationPage.getEmailInput().val("invalid_email");
+    reAuthenticationPage.getSubmitEmailButton().click();
+    reAuthenticationPage.getErrorsBox().shouldHave(text("Email is not valid."));
   }
 
   protected void checkDeliveryFormErrorMessages(BillingPageUnregistered billingPage) {
