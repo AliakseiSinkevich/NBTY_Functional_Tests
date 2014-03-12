@@ -16,7 +16,6 @@ import static gnc.util.PageUtils.registerUser;
 public class MyAccountAddressesSpec extends GNCCommonSpec {
   @Test
   public void firstAppliedDeliveryAddressShouldBeMarkedAsDefault() throws Exception {
-    Configuration.holdBrowserOpen = true;
     registerUser("FirstName", "LastName");
 
     goToCheckoutAndCreateDeliveryAddress();
