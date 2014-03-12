@@ -14,6 +14,7 @@ public class ProductDetailsPage {
 
   public BasketPage goToBasket() {
     $("#ajaxedBasket").click();
+    sleep(1000);
     return page(BasketPage.class);
   }
 
