@@ -19,7 +19,7 @@ public class RelatedCategoriesSpec extends GNCCommonSpec {
     for (SelenideElement link : pdp.getRelatedCategoriesList().findAll("a")) {
       String href = link.getAttribute("href");
       assertTrue("Product type link " + link + " must be ended with slash", href.endsWith("/"));
-      assertTrue("Product type url " + href + " should be combined as dimension selection url", href.contains("/shop/N=producttype_"));
+      assertTrue("Product type url " + href + " should be combined as dimension selection url", href.contains("/shop/N=type_"));
     }
 
     pdp.getRelatedCategoriesList().find("a").click();

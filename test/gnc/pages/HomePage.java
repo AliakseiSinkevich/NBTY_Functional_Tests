@@ -3,7 +3,7 @@ package gnc.pages;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.open;
 
 public class HomePage {
   public SelenideElement getMyGNC() {
@@ -11,8 +11,7 @@ public class HomePage {
   }
 
   public SignInPage openSignInPage() {
-    $(".signin").find("a").click();
-    return page(SignInPage.class);
+    return open($(".signin").find("a").getAttribute("href"), SignInPage.class);
   }
 
   public SelenideElement getRecentlyViewedSection() {
