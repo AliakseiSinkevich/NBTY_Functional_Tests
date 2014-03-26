@@ -11,6 +11,8 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class PageUtils {
+  private PageUtils() {}
+
   public static void signInAsDefaultUser() {
     HomePage homePage = open("/", HomePage.class);
     signOut();

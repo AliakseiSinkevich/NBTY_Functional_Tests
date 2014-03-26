@@ -1,10 +1,11 @@
 package gnc.pages;
 
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class BasketPage {
   public void goToCheckout() {
-    $(byText("Checkout now")).click();
+    $(".checkout-btn").click();
+    sleep(500);
   }
 }

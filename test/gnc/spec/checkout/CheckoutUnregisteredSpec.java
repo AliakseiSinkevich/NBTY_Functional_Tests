@@ -1,6 +1,5 @@
 package gnc.spec.checkout;
 
-import com.codeborne.selenide.Configuration;
 import gnc.pages.ProductDetailsPage;
 import gnc.pages.checkout.AboutYouPage;
 import gnc.pages.checkout.BillingPageRegistered;
@@ -29,8 +28,6 @@ public class CheckoutUnregisteredSpec extends GNCCommonSpec {
 
   @Test
   public void checkBasicUnregisteredCheckout() throws Exception {
-    Configuration.holdBrowserOpen = true;
-
     AboutYouPage aboutYouPage = goToCheckoutUnregistered();
     checkMessagesOnAboutYouPage(aboutYouPage);
 
@@ -54,7 +51,6 @@ public class CheckoutUnregisteredSpec extends GNCCommonSpec {
    */
   @Test
   public void checkDeliveryFormForRegisteredOnCheckoutUser() throws Exception {
-    Configuration.holdBrowserOpen = true;
     AboutYouPage aboutYouPage = goToCheckoutUnregistered();
     aboutYouPage.fillPasswordFieldsToCreateAccount(getDefaultPassword());
     aboutYouPage.goToBilling("Vasya", "Pupkin");

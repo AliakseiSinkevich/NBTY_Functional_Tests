@@ -1,18 +1,16 @@
 package gnc.spec.checkout;
 
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import gnc.pages.MyAccountPage;
 import gnc.pages.ProductDetailsPage;
 import gnc.pages.checkout.BillingPageRegistered;
 import gnc.spec.GNCCommonSpec;
+import gnc.util.PageUtils;
 import org.junit.Before;
 import org.junit.Test;
-import gnc.util.PageUtils;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.Selenide.sleep;
@@ -34,7 +32,6 @@ public class CheckoutRegisteredSpec extends GNCCommonSpec {
 
   @Test
   public void checkBasicCheckoutFlowForRegisteredUser() throws Exception {
-    Configuration.holdBrowserOpen = true;
     BillingPageRegistered billingPage = goToCheckout();
     checkDeliveryDetailsFormErrorMessages(billingPage);
 

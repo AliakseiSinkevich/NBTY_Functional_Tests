@@ -1,6 +1,5 @@
 package gnc.spec.account;
 
-import com.codeborne.selenide.Configuration;
 import gnc.pages.ProductDetailsPage;
 import gnc.pages.checkout.BillingPageRegistered;
 import gnc.spec.GNCCommonSpec;
