@@ -2,7 +2,7 @@ package gnc.spec.checkout;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import gnc.pages.MyAccountPage;
+import gnc.pages.account.MyAccountPage;
 import gnc.pages.ProductDetailsPage;
 import gnc.pages.checkout.BillingPageRegistered;
 import gnc.spec.GNCCommonSpec;

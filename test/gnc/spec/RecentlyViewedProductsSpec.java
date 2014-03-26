@@ -12,8 +12,8 @@ import static gnc.util.PageUtils.getProductUrl;
 import static gnc.util.PageUtils.signOut;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static util.CustomFunctions.clearCookie;
-import static util.CustomFunctions.getCookieByName;
+import static gnc.util.PageUtils.clearCookie;
+import static gnc.util.PageUtils.getCookieByName;
 import static util.PropertiesManager.getRecentlyViewedCookieName;
 
 public class RecentlyViewedProductsSpec extends GNCCommonSpec {

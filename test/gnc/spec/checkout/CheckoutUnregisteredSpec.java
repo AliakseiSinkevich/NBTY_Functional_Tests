@@ -15,11 +15,11 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.Selenide.sleep;
 import static gnc.util.PageUtils.generateRandomEmail;
-import static gnc.util.PageUtils.signInAsDefaultUser;
+import static gnc.util.PageUtils.logInAsDefaultUser;
 import static gnc.util.PageUtils.signOut;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static util.CustomFunctions.clearCookie;
+import static gnc.util.PageUtils.clearCookie;
 import static util.PropertiesManager.getDefaultPassword;
 
 public class CheckoutUnregisteredSpec extends GNCCommonSpec {
@@ -68,7 +68,7 @@ public class CheckoutUnregisteredSpec extends GNCCommonSpec {
 
   protected AboutYouPage goToCheckoutUnregistered() {
     signOut();
-    signInAsDefaultUser();
+    logInAsDefaultUser();
     signOut();
     clearCookie("luc");
     ProductDetailsPage pdp = PageUtils.addProductToBasket("60003907");

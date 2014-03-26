@@ -1,4 +1,4 @@
-package gnc.pages;
+package gnc.pages.account;
 
 import com.codeborne.selenide.SelenideElement;
 

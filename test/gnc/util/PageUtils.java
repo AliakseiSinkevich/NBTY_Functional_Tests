@@ -5,18 +5,24 @@ import gnc.pages.HomePage;
 import gnc.pages.ProductDetailsPage;
 import gnc.pages.RegistrationPage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Cookie;
 import util.PropertiesManager;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class PageUtils {
   private PageUtils() {}
 
-  public static void signInAsDefaultUser() {
+  public static void logInAsDefaultUser() {
+    logIn(PropertiesManager.getTestLogin());
+  }
+
+  public static void logIn(String login) {
     HomePage homePage = open("/", HomePage.class);
     signOut();
-    homePage.openSignInPage().signIn(PropertiesManager.getTestLogin(), PropertiesManager.getDefaultPassword());
+    homePage.openSignInPage().signIn(login, PropertiesManager.getDefaultPassword());
   }
 
   public static String registerUser(String firstName, String lastName) {
@@ -50,5 +56,17 @@ public class PageUtils {
 
   public static String getProductUrl(String productId) {
     return "/shop/product/-" + productId;
+  }
+
+  public static Cookie getCookieByName(String name) {
+    return getWebDriver().manage().getCookieNamed(name);
+  }
+
+  public static void clearCookie(String cookieName) {
+    setCookie(cookieName, "");
+  }
+
+  public static void setCookie(String name, String value) {
+    getWebDriver().manage().addCookie(new Cookie(name, value));
   }
 }
