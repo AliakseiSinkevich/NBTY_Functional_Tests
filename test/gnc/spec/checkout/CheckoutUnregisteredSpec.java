@@ -14,12 +14,12 @@ import static com.codeborne.selenide.Condition.value;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.Selenide.sleep;
+import static gnc.util.PageUtils.clearCookie;
 import static gnc.util.PageUtils.generateRandomEmail;
 import static gnc.util.PageUtils.logInAsDefaultUser;
 import static gnc.util.PageUtils.signOut;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static gnc.util.PageUtils.clearCookie;
 import static util.PropertiesManager.getDefaultPassword;
 
 public class CheckoutUnregisteredSpec extends GNCCommonSpec {
@@ -81,17 +81,7 @@ public class CheckoutUnregisteredSpec extends GNCCommonSpec {
   }
 
   private void checkAuthenticationPageErrorMessages(ReAuthenticationPage reAuthenticationPage) {
-    reAuthenticationPage.getSubmitEmailButton().click();
-    reAuthenticationPage.getErrorsBox().shouldHave(text("Password is required."));
-    reAuthenticationPage.getPasswordInput().val("123");
-    reAuthenticationPage.getSubmitEmailButton().click();
-    reAuthenticationPage.getErrorsBox().shouldHave(text("Please enter at least 6 characters."));
-    reAuthenticationPage.getPasswordInput().val("______");
-    reAuthenticationPage.getSubmitEmailButton().click();
-    sleep(500);
-    reAuthenticationPage.getErrorsBox().shouldHave(text("The entered username or password is invalid"));
-
-    reAuthenticationPage.openEmailEnteringForm();
+    reAuthenticationPage.openEmailEnteringFormIfRequired();
     sleep(500);
     reAuthenticationPage.getEmailInput().val("");
     reAuthenticationPage.getSubmitEmailButton().click();

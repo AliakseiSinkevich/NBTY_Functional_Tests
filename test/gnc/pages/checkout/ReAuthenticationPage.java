@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selenide.page;
 
 public class ReAuthenticationPage {
   public AboutYouPage goToAboutYou(String email) {
-    openEmailEnteringForm();
+    openEmailEnteringFormIfRequired();
     getEmailInput().val(email);
     getSubmitEmailButton().click();
     return page(AboutYouPage.class);
@@ -19,7 +19,7 @@ public class ReAuthenticationPage {
     return $("#checkout_form_email");
   }
 
-  public void openEmailEnteringForm() {
+  public void openEmailEnteringFormIfRequired() {
     if ($("#wrongEmailLink").isDisplayed()) {
       $("#wrongEmailLink").click();
     }
