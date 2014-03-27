@@ -1,6 +1,5 @@
 package gnc.spec;
 
-import com.codeborne.selenide.SelenideElement;
 import org.junit.Test;
 
 import static com.codeborne.selenide.Condition.visible;
@@ -18,7 +17,7 @@ public class Page404Spec extends GNCCommonSpec {
     verify404PageIsDisplayed();
   }
 
-  private SelenideElement verify404PageIsDisplayed() {
-    return $(byText("404 PAGE NOT FOUND")).shouldBe(visible);
+  private void verify404PageIsDisplayed() {
+    $(byText("404 PAGE NOT FOUND")).shouldBe(visible);
   }
 }

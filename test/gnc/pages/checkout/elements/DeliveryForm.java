@@ -45,7 +45,7 @@ public class DeliveryForm {
     return formElement.find("#frm_address_housenumber");
   }
 
-  public SelenideElement shouldBe(Condition... condition) {
-    return formElement.shouldBe(condition);
+  public void shouldBe(Condition... condition) {
+    formElement.shouldBe(condition);
   }
 }
