@@ -33,7 +33,7 @@ public class PropertiesManager {
       try {
         properties.load(new FileInputStream("test/Properties.properties"));
       } catch (IOException e) {
-        System.err.print(e);
+        e.printStackTrace();
       }
     }
     return properties;
